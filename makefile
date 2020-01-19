@@ -1,16 +1,26 @@
-appName = snake
-lib = -I ./include/ 
-CPPFLAG = -Werror -Wall
+EXE_FILE := snake.exe
+SRC_DIR := ./src
+OBJ_DIR := ./obj
+SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp) # contain te name of each cpp file in SRC_DIR
+OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES)) # replace the name of the .cpp file with a .o for all SRC_FILE
+LDFLAGS := 
+CPPFLAGS := -Werror -Wall
+CXXFLAGS := -I ./include/
 
-all: compile
-	
 
-run: compile
-	./$(appName).out
+all: $(EXE_FILE)
 
-# compiling src code -I is to include a lib
-compile:
-	g++ ./src/*.cpp $(lib) $(CPPFLAG) -o $(appName).out
+run: $(EXE_FILE)
+	./$(EXE_FILE)
 
-clean:
-	rm *.out
+# the .exe depend on all obj (*.o) file
+$(EXE_FILE): $(OBJ_FILES)
+	g++ $(LDFLAGS) -o $@ $^
+
+# rule for all the obj (*.o) file
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	g++ $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
+
+clean: 
+	rm ./*/*.o *.exe
+

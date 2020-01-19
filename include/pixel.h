@@ -1,24 +1,27 @@
 #ifndef PIXEL_H
 #define PIXEL_H
 
-#include "drawable.h"
 #include <iostream>
+#include <vector>
+#include "printable.h"
 
 class Pixel {
     
     public:
         Pixel(int x, int y);
-        ~Pixel(){};
+        ~Pixel();
         friend std::ostream& operator<<(std::ostream &os, const Pixel &pixel);
-        void setDisplayer(Drawable* drawable);
+        void setDisplayer(Printable* printable);
+        Pixel* getNeighbour(Direction Direction);
+        void setNeighbour(Direction direction, Pixel* neighbour);
         
 
     private:
-        Drawable* _dispayer;
-        Pixel* up;
-        Pixel* down;
-        Pixel* left;
-        Pixel* right;        
+        Printable* _dispayer;
+        Pixel* _up;
+        Pixel* _down;
+        Pixel* _left;
+        Pixel* _right;
         int _x;
         int _y;
 

@@ -1,16 +1,16 @@
 #ifndef SNAKEPART_H
 #define SNAKEPART_H
 
-#include "drawable.h"
+#include "printable.h"
 
 
-class SnakePart :public Drawable{
+class SnakePart :public Printable{
     public :
         virtual ~SnakePart(){};
-        virtual std::ostream& operator<<(std::ostream& os) = 0;
 
     protected:
         Direction _direction;
+        virtual std::ostream& print(std::ostream& os) = 0;
 };
 
 #endif //SNAKEPART_H

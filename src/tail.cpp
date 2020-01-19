@@ -1,7 +1,7 @@
 #include "tail.h"
 
 
-std::ostream& Tail::operator<< (std::ostream &os){
+std::ostream& Tail::print(std::ostream &os){
     os << TAIL;
     return os;
 }

@@ -7,8 +7,11 @@ const char TAIL = 'o';
 
 class Tail: public SnakePart {
     public:
-        virtual std::ostream& operator<<(std::ostream &os) override;
-    
+    virtual ~Tail() override{};
+        
+    protected:
+        virtual std::ostream& print(std::ostream &os) override;
+
     private:
         SnakePart* _next;
         SnakePart* _previous;

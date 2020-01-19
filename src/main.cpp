@@ -4,5 +4,11 @@
 
 int main(){
    Grid grid;
-   std::cout << grid;
+
+   while(true){
+      grid.clear();
+      std::cout << grid;
+      grid.getCommand();
+      std::cout<< std::getchar();
+   }
 }

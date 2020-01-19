@@ -2,14 +2,35 @@
 
 Snake::Snake():_length(1){
     this->_head = new Head();
-    this->_tail = new Tail();
 }
 
 Snake::~Snake(){
     delete this->_head;
-    delete this->_tail;
 }
 
 Head* Snake::head(){
     return this->_head;
+}
+
+void Snake::move(Direction direction){
+    
+    this->_head->move(direction);
+    
+    switch (direction){
+        case Direction::Up:
+
+            break;
+
+        case Direction::Right:
+
+            break;
+
+        case Direction::Down:
+
+            break;
+
+        case Direction::Left:
+
+            break;
+    }
 }

@@ -1,4 +1,7 @@
-./vscode
+#vs code folder
+.vscode/
 
 
-*.out
+# compile file
+*.o
+*.exe

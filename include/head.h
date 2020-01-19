@@ -11,8 +11,12 @@ class Head : public SnakePart{
 
     public:
         Head();
-        virtual ~Head();
-        virtual std::ostream& operator<<(std::ostream &os) override;
+        virtual~Head() override;
+
+        void move(Direction direction);
+
+    protected:
+        virtual std::ostream& print(std::ostream &os) override;
 
     
     private :

@@ -17,11 +17,11 @@ class Snake {
         void eat(Direction direction);
         Head* head();
 
-
     private:
         unsigned _length;
+        
 
-        Tail *_tail;
+        std::vector<Tail*> _tail;
         Head *_head;
 
 
