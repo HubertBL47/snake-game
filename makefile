@@ -8,9 +8,14 @@ CPPFLAGS := -Werror -Wall
 CXXFLAGS := -I ./include/
 
 
-all: $(EXE_FILE)
+all: compile
 
-run: $(EXE_FILE)
+compile: dir $(EXE_FILE)
+
+dir:
+	mkdir -p $(OBJ_DIR)
+
+run: compile
 	./$(EXE_FILE)
 
 # the .exe depend on all obj (*.o) file

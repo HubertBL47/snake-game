@@ -5,7 +5,10 @@
 #include "inputHandler.h"
 int main(){
    InputHandler a;
-   a.getDirection();
+
+   while (true){
+      std::cout << a.getDirection();
+   }
 
    // Grid grid;
    // std::string a;

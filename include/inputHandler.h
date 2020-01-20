@@ -1,10 +1,11 @@
 #ifndef INPUTHANDLER_H
 #define INPUTHANDLER_H
 
-#include <boost/signals2.hpp>
+//#include <boost/signals2.hpp>
 #include <termios.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <stdexcept>
 
 #include "direction.h"
 

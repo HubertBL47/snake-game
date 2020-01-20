@@ -2,26 +2,40 @@
 
 #include <iostream>
 Direction InputHandler::getDirection() const{
-    int code = getKeyCode();
-    int direction = 0b1111;
+    int code;
+    bool direction[4] = {true, true, true, true};
     int i =0;
     while( i < 3){
+        code = this->getKeyCode();
         
         // il faut faire un mask pour avoir la bonne fonction logique
-        direction & this->isCodeIn(code, UP_ARROW, i) << Direction::Up;
-        direction & this->isCodeIn(code, DOWN_ARROW, i) << Direction::Down;
-        direction & this->isCodeIn(code, LEFT_ARROW, i) << Direction::Left;
-        direction & this->isCodeIn(code, RIGHT_ARROW, i) << Direction::Right;
+        direction[Direction::Up] &= code == UP_ARROW[i];
+        direction[Direction::Right] &= code == RIGHT_ARROW[i];
+        direction[Direction::Down] &= code == DOWN_ARROW[i];
+        direction[Direction::Left] &= code == LEFT_ARROW[i];
         
-        if (direction == 0){ // none has been pressed, lets start over
-            direction = 0b1111;
-            i = 0;
-        } else { // keep going
+        // verified if there is a match
+        bool match = false;
+        for (int i = Direction::Up; i != Direction::NDirections; ++i){
+            match |= direction[i];
+        }
+        if (match){ //keep going
             ++i;
+        } else { // none is currently matching. retry
+            for (int i = Direction::Up; i != Direction::NDirections; ++i){
+                direction[i] = true;
+            }
+            i = 0;
         }
     }
-    // doit s'occuper du return aussi
-    return Direction::Up;
+    
+    for (int i = Direction::Up; i != Direction::NDirections; ++i){
+        if(direction[i]){
+            return static_cast<Direction>(i);
+        }   
+    }
+    // ne devrais jamais se rendre ici
+    throw new std::exception();
 }
 
 int InputHandler::getKeyCode() const{
