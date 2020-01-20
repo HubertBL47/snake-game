@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "printable.h"
+#include "direction.h"
 
 class Pixel {
     
@@ -14,7 +15,6 @@ class Pixel {
         void setDisplayer(Printable* printable);
         Pixel* getNeighbour(Direction Direction);
         void setNeighbour(Direction direction, Pixel* neighbour);
-        
 
     private:
         Printable* _dispayer;

@@ -2,9 +2,9 @@
 #define PRINTABLE_H
 
 #include <iostream>
-class Pixel;
 
-enum Direction{Up, Right, Down, Left};
+#include "direction.h"
+class Pixel;
 
 class Printable{
 

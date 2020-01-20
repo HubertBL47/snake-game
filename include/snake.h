@@ -6,6 +6,7 @@
 #include "snakePart.h"
 #include "head.h"
 #include "tail.h"
+#include "direction.h"
 
 class Snake {
 

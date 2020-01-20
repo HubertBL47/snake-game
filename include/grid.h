@@ -3,11 +3,12 @@
 
 #include <iostream>
 #include <vector>
-#include <curses.h>
 
 #include "pixel.h"
 #include "snake.h"
 #include "border.h"
+#include "direction.h"
+
 
 const int SIZE_X = 30, SIZE_Y =30;
 
@@ -18,6 +19,7 @@ class Grid{
         friend std::ostream& operator<<(std::ostream &os, const Grid& grid);
         void clear() const;
         void getCommand();
+        int getChar();
 
 
     private:

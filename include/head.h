@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "snakePart.h"
+#include "direction.h"
 
 const char HEAD_TYPE[] = {'^', '>', 'v', '<'};
 

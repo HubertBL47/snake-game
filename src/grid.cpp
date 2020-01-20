@@ -76,23 +76,26 @@ void Grid::clear()const {
 
 void Grid::getCommand(){
     
-    switch (1)//getch())
-    { 
-    case KEY_UP:
-        this->_snake->move(Direction::Up);
-        break;
+    // switch (getch())
+    // { 
+    // case KEY_UP:
+    //     this->_snake->move(Direction::Up);
+    //     break;
     
-    case KEY_DOWN:
-        this->_snake->move(Direction::Down);
-        break;
+    // case KEY_DOWN:
+    //     this->_snake->move(Direction::Down);
+    //     break;
 
-    case KEY_RIGHT:
-        this->_snake->move(Direction::Right);
-        break;
+    // case KEY_RIGHT:
+    //     this->_snake->move(Direction::Right);
+    //     break;
     
-    case KEY_LEFT:
-        this->_snake->move(Direction::Left);
-        break;
-    }
+    // case KEY_LEFT:
+    //     this->_snake->move(Direction::Left);
+    //     break;
+    // default:
+    //     this->_snake->move(Direction::Left);
+    //     break;
+    // }
     
 }
