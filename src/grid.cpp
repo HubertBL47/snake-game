@@ -9,11 +9,11 @@ Grid::Grid(){
     }
 
     // setting the border
-    for (int i =1; i < SIZE_X -1; ++i){
+    for (int i =0; i < SIZE_X; ++i){
         (*this->_grid[0])[i]->setDisplayer(new Border(BorderType::Horizontal));
         (*this->_grid[SIZE_Y -1])[i]->setDisplayer(new Border(BorderType::Horizontal));
     }
-    for (int i = 1; i < SIZE_Y; ++i){
+    for (int i = 0; i < SIZE_Y; ++i){
         (*this->_grid[i])[0]->setDisplayer(new Border(BorderType::Vertical));
         (*this->_grid[i])[SIZE_X - 1]->setDisplayer(new Border(BorderType::Vertical));
     }
@@ -116,8 +116,6 @@ void Grid::setCherry(){
         if ((*this->_grid[y])[x]->canHaveCherry()){
             --position;
         }
-
     }
-
     (*this->_grid[y])[x]->setDisplayer(this->_cherry);
 }

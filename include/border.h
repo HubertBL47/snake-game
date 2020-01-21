@@ -25,5 +25,4 @@ class Border: public Printable{
 };
 
 
-
 #endif // BORDER_H
