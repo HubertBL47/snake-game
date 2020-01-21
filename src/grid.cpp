@@ -23,7 +23,16 @@ Grid::Grid(){
 
     //setting the snake
     this->_snake = new Snake();
+
+    // set the pixel for the head and the head for the pixel
+    this->_snake->head()->setPixel((*this->_grid[SIZE_Y/2])[SIZE_X/2]); 
     (*this->_grid[SIZE_Y/2])[SIZE_X/2]->setDisplayer(this->_snake->head());
+    
+    this->_snake->eat(Direction::Up);
+    // this->_snake->move(Direction::Up);
+    this->_snake->eat(Direction::Up);
+    //  this->_snake->move(Direction::Up);
+    this->_snake->eat(Direction::Up);
 }
 
 Grid::~Grid(){

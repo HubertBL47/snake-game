@@ -3,11 +3,13 @@
 
 #include "snakePart.h"
 
-const char TAIL = 'o';
+const char TAIL = 'O';
 
 class Tail: public SnakePart {
     public:
-    virtual ~Tail() override{};
+    Tail();
+    Tail(Pixel* pixel);
+    virtual ~Tail() override;
         
     protected:
         virtual std::ostream& print(std::ostream &os) override;

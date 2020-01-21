@@ -3,7 +3,7 @@ SRC_DIR := ./src
 OBJ_DIR := ./obj
 SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp) # contain te name of each cpp file in SRC_DIR
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES)) # replace the name of the .cpp file with a .o for all SRC_FILE
-LDFLAGS := -lncurses 
+LDFLAGS := -lncurses -lpthread
 CPPFLAGS := -Werror -Wall 
 CXXFLAGS := -I ./include/
 

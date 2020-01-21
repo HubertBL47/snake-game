@@ -15,19 +15,17 @@ std::ostream& operator<<(std::ostream &os, const Pixel &pixel){
     if (pixel._dispayer){
         os << *pixel._dispayer;
     } else {
-        os << ' ';
+        os << " ";
     }
     return os;
 }
 
 void Pixel::setDisplayer(Printable* displayer){
-    if (displayer != nullptr){
-        displayer->setPixel(this);
-    }
     this->_dispayer = displayer;
 }
 
 Pixel* Pixel::getNeighbour(Direction direction) {
+    
     switch (direction)
     {
     case Direction::Up:

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+
 #include "printable.h"
 #include "direction.h"
 
