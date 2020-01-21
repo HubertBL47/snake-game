@@ -27,4 +27,4 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	g++ $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $< 
 
 clean: 
-	rm ./*/*.o *.exe
+	rm $(OBJ_DIR)/*.o *.exe

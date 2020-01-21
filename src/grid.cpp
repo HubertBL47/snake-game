@@ -36,14 +36,13 @@ Grid::~Grid(){
     delete this->_snake;
 }
 
-std::ostream& operator<<(std::ostream &os, const Grid& grid){
-    for(auto line : grid._grid){
+void Grid::print(){
+    for(auto line : this->_grid){
         for(Pixel* pixel : *line){
-            os << *pixel;
+            std::cout << *pixel;
         }
-        os << '\n';
+        std::cout << '\n';
     }
-    return os;
 }
 
 void Grid::setNeighbours(){
@@ -74,28 +73,14 @@ void Grid::clear()const {
     #endif
 }
 
-void Grid::getCommand(){
-    
-    // switch (getch())
-    // { 
-    // case KEY_UP:
-    //     this->_snake->move(Direction::Up);
-    //     break;
-    
-    // case KEY_DOWN:
-    //     this->_snake->move(Direction::Down);
-    //     break;
+void Grid::mainLoop(){
 
-    // case KEY_RIGHT:
-    //     this->_snake->move(Direction::Right);
-    //     break;
+    while (true){
+        this->clear();
+        this->print();
+        this->_snake->move(this->inputHandler.getDirection());
+    }
     
-    // case KEY_LEFT:
-    //     this->_snake->move(Direction::Left);
-    //     break;
-    // default:
-    //     this->_snake->move(Direction::Left);
-    //     break;
-    // }
+    
     
 }

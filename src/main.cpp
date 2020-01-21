@@ -1,22 +1,9 @@
 #include <iostream>
 #include "grid.h"
 
-
-#include "inputHandler.h"
 int main(){
-   InputHandler a;
 
-   while (true){
-      std::cout << a.getDirection();
-   }
+   Grid grid;
+   grid.mainLoop();
 
-   // Grid grid;
-   // std::string a;
-   // while(true){
-   //    std::cout << grid.getChar();
-   //    // grid.clear();
-   //    // std::cout << grid;
-   //    // grid.getCommand();
-   //    // std::cout<< std::getchar();
-   // }
 }

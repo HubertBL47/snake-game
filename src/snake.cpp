@@ -32,5 +32,7 @@ void Snake::move(Direction direction){
         case Direction::Left:
 
             break;
+        default:
+            break;
     }
 }

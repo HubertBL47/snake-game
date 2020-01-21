@@ -38,8 +38,9 @@ Pixel* Pixel::getNeighbour(Direction direction) {
         return this->_left;
     case Direction::Right:
         return this->_right;
+    default:
+        return nullptr;
    }
-   return nullptr;
 }
 
 void Pixel::setNeighbour(Direction direction, Pixel* neighbour){
@@ -56,6 +57,8 @@ void Pixel::setNeighbour(Direction direction, Pixel* neighbour){
         break;
     case Direction::Right:
         this->_right = neighbour;
+        break;
+    default:
         break;
    }
 }
