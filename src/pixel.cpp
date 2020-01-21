@@ -60,3 +60,28 @@ void Pixel::setNeighbour(Direction direction, Pixel* neighbour){
         break;
    }
 }
+
+bool Pixel::canHaveCherry(){
+    return this->_dispayer == nullptr;
+}
+
+Printable* Pixel::getDisplayer() const{
+    return this->_dispayer;
+}
+
+
+bool Pixel::growIfEated(){
+    if (this->_dispayer != nullptr){
+        return this->_dispayer->growIfEated();
+    } else {
+        return false;
+    }
+}
+
+bool Pixel::looseIfMoovingOn(){
+    if (this->_dispayer != nullptr){
+        return this->_dispayer->looseIfMoovingOn();
+    } else {
+        return false;
+    }
+}

@@ -27,12 +27,9 @@ Grid::Grid(){
     // set the pixel for the head and the head for the pixel
     this->_snake->head()->setPixel((*this->_grid[SIZE_Y/2])[SIZE_X/2]); 
     (*this->_grid[SIZE_Y/2])[SIZE_X/2]->setDisplayer(this->_snake->head());
-    
-    this->_snake->eat(Direction::Up);
-    // this->_snake->move(Direction::Up);
-    this->_snake->eat(Direction::Up);
-    //  this->_snake->move(Direction::Up);
-    this->_snake->eat(Direction::Up);
+
+    this->_cherry = new Cherry();
+    this->setCherry();
 }
 
 Grid::~Grid(){
@@ -43,6 +40,7 @@ Grid::~Grid(){
         delete this->_grid[i];
     }
     delete this->_snake;
+    delete this->_cherry;
 }
 
 void Grid::print(){
@@ -83,13 +81,43 @@ void Grid::clear()const {
 }
 
 void Grid::mainLoop(){
-
-    while (true){
+    int snakeLength = this->_snake->getBodyLength();
+    bool again;
+    do{
         this->clear();
         this->print();
-        this->_snake->move(this->inputHandler.getDirection());
+        if (snakeLength < this->_snake->getBodyLength()){
+            snakeLength = this->_snake->getBodyLength();
+            this->setCherry();
+        }
+        again = this->_snake->move(this->inputHandler.getDirection());
+    }while( again );
+    
+    this->clear();
+    this->print();
+
+    std::cout << "Game Over !!\nPress Any Key to continue\n";
+    
+}
+
+void Grid::setCherry(){
+    int position = rand() %  ((SIZE_X - 2) * (SIZE_Y -2) - this->_snake->getBodyLength()); 
+    // minus the number of snake pixel and border
+    
+    int y = 1, x = 0; // 0 because x is increment at the beginning
+
+    while(position != 0){
+        ++x;
+        if (x >= SIZE_X -1){ // if x reference a border
+            ++y;
+            x = 1;
+        }
+
+        if ((*this->_grid[y])[x]->canHaveCherry()){
+            --position;
+        }
+
     }
-    
-    
-    
+
+    (*this->_grid[y])[x]->setDisplayer(this->_cherry);
 }

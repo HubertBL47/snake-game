@@ -8,6 +8,7 @@
 #include "head.h"
 #include "tail.h"
 #include "direction.h"
+#include "cherry.h"
 
 class Snake {
 
@@ -15,13 +16,13 @@ class Snake {
         Snake();
         ~Snake();
 
-        void move(Direction direction);
+        bool move(Direction direction);
         Head* head();
         int getBodyLength() const;
-        void eat(Direction direction);
 
     private:
 
+        void eat(Direction direction);
         unsigned _length;
         
 

@@ -8,11 +8,14 @@ class Cherry : public Printable{
 
         Cherry();
         virtual ~Cherry();  
+
+        virtual bool growIfEated() override;
+        virtual bool looseIfMoovingOn() override;
+
     private:
-        virtual std::ostream& print(std::ostream &os) override {
-            os << "*";
-            return os;
-        }
+        virtual std::ostream& print(std::ostream &os) override ;
+
+        bool _alive;
 };
 
 #endif // CHERRY_H

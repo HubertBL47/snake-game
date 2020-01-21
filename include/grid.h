@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include <vector>
+#include <cstdlib>
 
 #include "pixel.h"
 #include "snake.h"
 #include "border.h"
 #include "direction.h"
 #include "inputHandler.h"
+#include "cherry.h"
 
 
 const int SIZE_X = 30, SIZE_Y =30;
@@ -24,7 +26,9 @@ class Grid{
         void setNeighbours();
         void clear() const;
         void print();
+        void setCherry();
 
+        Cherry* _cherry;
         std::vector<std::vector<Pixel*>*> _grid;
         Snake* _snake;
         InputHandler inputHandler;

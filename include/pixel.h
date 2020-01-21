@@ -15,7 +15,12 @@ class Pixel {
         friend std::ostream& operator<<(std::ostream &os, const Pixel &pixel);
         void setDisplayer(Printable* printable);
         Pixel* getNeighbour(Direction Direction);
+        Printable* getDisplayer() const;
         void setNeighbour(Direction direction, Pixel* neighbour);
+        bool canHaveCherry();
+
+        bool growIfEated();
+        bool looseIfMoovingOn();
 
     private:
         Printable* _dispayer;

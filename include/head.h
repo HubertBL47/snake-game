@@ -13,8 +13,9 @@ class Head : public SnakePart{
     public:
         Head();
         virtual~Head() override;
-
-        void move(Direction direction);
+        bool move(Direction direction);
+        bool grow() const;
+        void consume();
 
     protected:
         virtual std::ostream& print(std::ostream &os) override;
@@ -23,6 +24,7 @@ class Head : public SnakePart{
     private :
         Direction _direction;
         SnakePart* _previous;
+        bool _grow;
 
 };
 

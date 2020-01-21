@@ -16,7 +16,7 @@ const int DOWN_ARROW[] = {27, 91, 66} ;
 const int LEFT_ARROW[] = {27, 91, 68} ;
 const int RIGHT_ARROW[] = {27, 91, 67} ;
 
-const int FRAME_TIME = (1000.0/10.0); // 15 frame per second in ms
+const int FRAME_TIME = (1000.0/7.0); // 15 frame per second in ms
 
 class InputHandler /*: public boost::signals2::signal_base*/{
     public:
@@ -31,6 +31,7 @@ class InputHandler /*: public boost::signals2::signal_base*/{
 
         Direction _direction;
         std::thread _thread;
+        bool _getInput;
 };
 
 #endif // INPUTHANDLER_H
