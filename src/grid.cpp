@@ -1,6 +1,6 @@
 #include "grid.h"
 
-Grid::Grid(){
+Grid::Grid() : _score(POINT_PER_CHERRY){
     for( int i = 0; i < SIZE_Y ; ++i){
         this->_grid.push_back(new std::vector<Pixel*>);
         for (int j = 0; j < SIZE_X; ++j){
@@ -44,6 +44,10 @@ Grid::~Grid(){
 }
 
 void Grid::print(){
+
+    // -1 because we do not count the head
+    std::cout << "Score : " << (unsigned)this->_score << "\nCherry eated : " << this->_snake->getBodyLength() - 1 << std::endl;
+
     for(auto line : this->_grid){
         for(Pixel* pixel : *line){
             std::cout << *pixel;
@@ -89,6 +93,9 @@ void Grid::mainLoop(){
         if (snakeLength < this->_snake->getBodyLength()){
             snakeLength = this->_snake->getBodyLength();
             this->setCherry();
+            this->_score += POINT_PER_CHERRY;
+        } else {
+            this->_score -= POINT_PER_FRAME; // loose 1 point evry time you dont pick up a cherry
         }
         again = this->_snake->move(this->inputHandler.getDirection());
     }while( again );
