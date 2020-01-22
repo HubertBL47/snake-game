@@ -29,7 +29,8 @@ class InputHandler /*: public boost::signals2::signal_base*/{
         void readDirection();
         bool isCodeIn(int code, const int neededCode[], int index) const;
 
-        Direction _direction;
+        Direction _currentDirection;
+        Direction _nextDirection;
         std::thread _thread;
         bool _getInput;
 };

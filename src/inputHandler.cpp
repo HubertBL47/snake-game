@@ -2,8 +2,10 @@
 
 #include <iostream>
 
-InputHandler::InputHandler(): _getInput(true){
-    this->_direction = Direction::Up;
+InputHandler::InputHandler(){
+    this->_currentDirection = Direction::Up;
+    this->_nextDirection = Direction::Up;
+    this->_getInput = true;
     this->_thread = std::thread(&InputHandler::readDirection, this);
 }
 
@@ -19,7 +21,8 @@ Direction InputHandler::getDirection(){
     // wait for the right amount of time
     while(std::chrono::steady_clock::now() - start < std::chrono::milliseconds(FRAME_TIME)){
     }
-    return this->_direction;
+    this->_currentDirection = this->_nextDirection;
+    return this->_currentDirection;
 }
 
 
@@ -31,8 +34,7 @@ void InputHandler::readDirection(){
         int i =0;
         while( i < 3 && this->_getInput){ // 3 because all array has a max size of 3
             code = this->getKeyCode();
-            //https://stackoverflow.com/questions/12207684/how-do-i-terminate-a-thread-in-
-            // il faut faire un mask pour avoir la bonne fonction logique
+
             direction[Direction::Up] &= code == UP_ARROW[i];
             direction[Direction::Right] &= code == RIGHT_ARROW[i];
             direction[Direction::Down] &= code == DOWN_ARROW[i];
@@ -55,7 +57,10 @@ void InputHandler::readDirection(){
         
         for (int i = Direction::Up; i != Direction::NDirections; ++i){
             if(direction[i]){
-                this->_direction = static_cast<Direction>(i);
+                // dont allow to go reverse
+                if (REVERSE_DIRECTION.at(static_cast<Direction>(i)) != this->_currentDirection ){
+                    this->_nextDirection = static_cast<Direction>(i);
+                }
             }   
         }
     }

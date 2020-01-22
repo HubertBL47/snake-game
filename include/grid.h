@@ -13,7 +13,7 @@
 #include "cherry.h"
 
 
-const int SIZE_X = 30, SIZE_Y =30;
+const int SIZE_X = 40, SIZE_Y = 20;
 
 class Grid{
     public:
