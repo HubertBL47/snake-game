@@ -1,11 +1,12 @@
 EXE_FILE := snake.exe
+INCLUDE_DIR = ./include/
 SRC_DIR := ./src
 OBJ_DIR := ./obj
 SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp) # contain te name of each cpp file in SRC_DIR
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES)) # replace the name of the .cpp file with a .o for all SRC_FILE
 LDFLAGS := -lncurses -lpthread
-CPPFLAGS := -Werror -Wall 
-CXXFLAGS := -I ./include/
+CPPFLAGS := -Werror -Wall -I $(INCLUDE_DIR)
+CXXFLAGS := 
 
 
 all: compile
@@ -28,3 +29,5 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 
 clean: 
 	rm $(OBJ_DIR)/*.o *.exe
+
+remake: clean compile
