@@ -31,3 +31,6 @@ clean:
 	rm $(OBJ_DIR)/*.o *.exe
 
 remake: clean compile
+
+update: 
+	git pull
